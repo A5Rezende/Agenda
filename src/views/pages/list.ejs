@@ -1,0 +1,42 @@
+<%- include('../includes/head') %>
+
+<section>
+  <div class="list">
+    <div class="header">
+      <div class="header-add"></div>
+      <div class="header-tittle"><h1>Agenda de trabalhos</h1></div>
+      <div class="header-add">
+        <a href="/task">
+          <button class="button-add"><b>Adicionar Tarefa</b></button>
+        </a>
+      </div>
+    </div>
+    <div class="tasks">
+      <table class="task-list">
+        <tr>
+          <th class="col-date">Data de Conclusão</th>
+          <th class="col-name">Nome</th>
+          <th class="col-description">Descrição</th>
+          <th class="col-actions">Ações</th>
+        </tr>
+        <% tasks.forEach(task => { %>
+        <tr>
+          <td class="col-date"><%= task.date %></td>
+          <td class="col-name"><%= task.name %></td>
+          <td class="col-description"><%= task.description %></td>
+          <td class="col-actions list-actions">
+            <button class="button-edit">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
+            <button class="button-delete">
+              <a href="/delete/<%= task.id%>">
+                <i class="fa-solid fa-trash-can"></i>
+              </a>
+            </button>
+          </td>
+        </tr>
+        <% }); %>
+      </table>
+    </div>
+  </div>
+</section>
