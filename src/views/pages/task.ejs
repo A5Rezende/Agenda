@@ -1,0 +1,25 @@
+<%- include('../includes/head') %>
+
+<section>
+  <div class="list">
+    <div class="header">
+      <div class="header-add"></div>
+      <div class="header-tittle"><h1>Tarefas</h1></div>
+      <div class="header-add">
+        <a href="/"><button class="button-add">Voltar</button></a>
+      </div>
+    </div>
+    <div>
+      <% if(task.id) { %>
+      <form action="/task/<%= task.id %>" method="post">
+      <% } else { %>
+      <form action="/task" method="post">
+      <% } %>
+        <input type="date" name="date" value="<%= task.date %>" required/>
+        <input type="text" name="name" value="<%= task.name %>" required/>
+        <input type="text" name="description" value="<%= task.description %>" required/>
+        <input type="submit" value="Enviar"/>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,16 +1,16 @@
 const Task = require("../models/Task");
 
 exports.index = async function (req, res) {
-  res.render("task", { jogador: {} });
+  res.render("task", { task: {} });
 };
 
 exports.create = async function (req, res) {
+  // Corrigir problema com erros e mostrar na tela
+
   const task = new Task(req.body.date, req.body.name, req.body.description);
   await task.create();
 
-  if (task.errors.length > 0) {
-    res.render(task.errors);
-  }
+  res.redirect("../");
 };
 
 exports.update = async function (req, res) {
