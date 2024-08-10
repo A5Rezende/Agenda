@@ -9,7 +9,7 @@ route.get("/", listController.list);
 route.get("/task", taskController.index);
 route.post("/task", taskController.create);
 route.get("/task/:id", taskController.updateIndex);
-route.post("/edit/:id", taskController.update);
+route.post("/task/:id", taskController.update);
 route.get("/delete/:id", taskController.delete);
 
 module.exports = route;

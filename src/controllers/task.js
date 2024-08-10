@@ -5,11 +5,12 @@ exports.index = async function (req, res) {
 };
 
 exports.create = async function (req, res) {
-  // Corrigir problema com erros e mostrar na tela
-
-  const task = new Task(req.body.date, req.body.name, req.body.description);
-  await task.create();
-
+  if (!req.body.date && !req.body.name && !req.body.description) {
+    res.send("Falta parametros");
+  } else {
+    const task = new Task(req.body.date, req.body.name, req.body.description);
+    await task.create();
+  }
   res.redirect("../");
 };
 
@@ -18,6 +19,12 @@ exports.update = async function (req, res) {
 
   const task = new Task(req.body.date, req.body.name, req.body.description);
   await task.update(parseInt(req.params.id));
+
+  if (!task) {
+    return res.render("404");
+  }
+
+  res.redirect("../");
 };
 
 exports.updateIndex = async function (req, res) {
@@ -28,7 +35,6 @@ exports.updateIndex = async function (req, res) {
   if (!task) {
     return res.render("404");
   }
-  // console.log(task);
   res.render("task", { task });
 };
 

@@ -9,16 +9,18 @@
         <a href="/"><button class="button-add">Voltar</button></a>
       </div>
     </div>
-    <div>
+    <div class="form">
       <% if(task.id) { %>
       <form action="/task/<%= task.id %>" method="post">
       <% } else { %>
       <form action="/task" method="post">
       <% } %>
-        <input type="date" name="date" value="<%= task.date %>" required/>
-        <input type="text" name="name" value="<%= task.name %>" required/>
-        <input type="text" name="description" value="<%= task.description %>" required/>
-        <input type="submit" value="Enviar"/>
+        
+        <input class="input" type="date" name="date" id="date" value="<%= task.date %>" required/>
+        <input class="input" type="text" name="name" id="name" value="<%= task.name %>" required/>
+        <input class="input" type="text" name="description" id="description" value="<%= task.description %>" required/>
+        <input class="input" type="submit" value="Enviar" id="btn-submit"/>
+
       </form>
     </div>
   </div>
